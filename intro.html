@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Introduction to R and RStudio | Learn R for Data Wrangling and Data Science</title>
+  <meta name="description" content="This is a bookdown website exploring the basics of learning R for data wrangling and data science." />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Introduction to R and RStudio | Learn R for Data Wrangling and Data Science" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a bookdown website exploring the basics of learning R for data wrangling and data science." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Introduction to R and RStudio | Learn R for Data Wrangling and Data Science" />
+  
+  <meta name="twitter:description" content="This is a bookdown website exploring the basics of learning R for data wrangling and data science." />
+  
+
+<meta name="author" content="GA for TC" />
+
+
+<meta name="date" content="2020-04-28" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">An interactive book</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#what-to-expect"><i class="fa fa-check"></i><b>1.1</b> What to expect</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#resources-needed"><i class="fa fa-check"></i><b>1.2</b> Resources Needed:</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#what-is-r"><i class="fa fa-check"></i><b>1.3</b> What is R?</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#is-it-worth-learning-r-for-data-wranglingdata-science-as-opposed-to-other-languages-like-python"><i class="fa fa-check"></i><b>1.4</b> Is it worth learning R for data wrangling/data science as opposed to other languages like Python?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction to R and RStudio</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#the-rstudio-interface"><i class="fa fa-check"></i><b>2.1</b> The RStudio interface</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="intro.html"><a href="intro.html#the-code-editor"><i class="fa fa-check"></i><b>2.1.1</b> The Code Editor</a></li>
+<li class="chapter" data-level="2.1.2" data-path="intro.html"><a href="intro.html#the-r-console"><i class="fa fa-check"></i><b>2.1.2</b> The R Console</a></li>
+<li class="chapter" data-level="2.1.3" data-path="intro.html"><a href="intro.html#the-workspace-and-history-pane"><i class="fa fa-check"></i><b>2.1.3</b> The Workspace and History pane</a></li>
+<li class="chapter" data-level="2.1.4" data-path="intro.html"><a href="intro.html#the-file-and-plots-or-miscellaneous-pane"><i class="fa fa-check"></i><b>2.1.4</b> The File and Plots (or Miscellaneous) pane</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#the-working-directory"><i class="fa fa-check"></i><b>2.2</b> The working directory</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#r-and-rstudio-tips"><i class="fa fa-check"></i><b>2.3</b> R and RStudio tips</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="intro.html"><a href="intro.html#organizing-your-working-directory"><i class="fa fa-check"></i><b>2.3.1</b> Organizing your working directory</a></li>
+<li class="chapter" data-level="2.3.2" data-path="intro.html"><a href="intro.html#other-ways-to-use-r"><i class="fa fa-check"></i><b>2.3.2</b> Other ways to use R</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Learn R for Data Wrangling and Data Science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="intro" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Introduction to R and RStudio</h1>
+<p>Now let us introduce the basic things needed for working with R: R and RStudio.</p>
+<p>For an introduction of how to download R and how to install RStudio, please <a href="https://cengel.github.io/R-intro/backgroud.html">refer to this link</a>.</p>
+<div id="the-rstudio-interface" class="section level2">
+<h2><span class="header-section-number">2.1</span> The RStudio interface</h2>
+<p>It will is useful to find a standard way to refer to the different parts of the RStudio interface. The following image uses the best naming convention I could find.</p>
+<p><img src="images/rstudio-interface.png" /></p>
+<div id="the-code-editor" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> The Code Editor</h3>
+<p>Note that the upper-left pane is called the code editor. Although different people call it by different names, I think this one works best. Other terms for this part include “source editor” or “script editor”.</p>
+<p>This is basically where you will be doing all your typing and coding. To create a new R file or script, click on the first button on the top menu-bar and select, for example, new R script.</p>
+<p><img src="images/new-rescript.png" /></p>
+<p>Once this new file is created, you can start writing your R code!</p>
+<p>You can run all of the contents of an R script by clicking on the <strong>Run</strong> button in the top middle-right, or you can highlight a chunk of code in the code editor and press cmd+Enter to run that piece of code. This is very useful when testing a piece of code without having to run the entire script!</p>
+<p><img src="images/run.png" /></p>
+</div>
+<div id="the-r-console" class="section level3">
+<h3><span class="header-section-number">2.1.2</span> The R Console</h3>
+<p>The console is used to execute R code directly by typing R commands into it, and it also displays the results of the executed code. Whenever you execute any command from any other part of RStudio, the console will also produce some feedback.</p>
+<p><img src="images/console.png" /></p>
+<p>Note that the RConsole pane has several tabs, including <strong>Console</strong> and <strong>Terminal</strong>. What is the difference between the two? Basically,</p>
+<ul>
+<li><p>The <em>terminal</em> is a general command-line interface that all computers have. It is used for executing commands of many types and is not unique to R or RStudio.</p></li>
+<li><p>The <em>Console</em> is a <strong>subset</strong> of the terminal that is running R in interactive mode, which allows you execute R commands directly. If you wanted to use R from the terminal, you would first need to execute a separate command to call and initiate R.</p></li>
+</ul>
+</div>
+<div id="the-workspace-and-history-pane" class="section level3">
+<h3><span class="header-section-number">2.1.3</span> The Workspace and History pane</h3>
+<p>This pane gives you an overview of your <strong>working environment</strong>. For one, it tells you how many variables and data objects you currently have loaded into memory. You can click on data objects (such as tables) to view the contents. This is very useful when you import files and save them into R objects. Here is an example of a workspace with some data and variables (<em>values</em>) loaded.</p>
+<p><img src="images/workspace.png" /></p>
+<p>To see on the console all the R objects currently loaded into your R Workspace, use the ls() command</p>
+<pre><code>ls()</code></pre>
+<p>To remove objects from memory, use the rm() command:</p>
+<pre><code>#removes all objects
+rm(list = ls())
+
+#removes one object
+rm(object_name)
+
+#removes multiple objects
+rm(c(&quot;object1&quot;, &quot;object2&quot;, &quot;object3&quot;))</code></pre>
+<p>You can also save the current state of your working environment (all objects etc) so that if you close RStudio and then later you open it again, you can pick up where you left off. To do this:</p>
+<pre><code># save all items in workspace to a .RData file 
+save.image()
+
+# save specified objects to a .RData file 
+save(object1, object2, file = &quot;myfile.RData&quot;) 
+
+# load workspace into current session
+load(&quot;myfile.RData&quot;)</code></pre>
+<p>However, you don’t really have to this manually as RStudio automatically asks you if you want to save your workspace, and then it reloads the previously saved workspace whenever you open the project again.</p>
+</div>
+<div id="the-file-and-plots-or-miscellaneous-pane" class="section level3">
+<h3><span class="header-section-number">2.1.4</span> The File and Plots (or Miscellaneous) pane</h3>
+<p>The bottom right pane contains multiple tabs. The Files tab allows you to see which files are available in your working directory. The Plots tab will display any visualizations that are produced by your code. The Packages tab will list all pack- ages downloaded to your computer and also the ones that are loaded (more on this concept of packages shortly). And the Help tab allows you to search for topics you need help on and will also display any help responses (more on this later as well).</p>
+</div>
+</div>
+<div id="the-working-directory" class="section level2">
+<h2><span class="header-section-number">2.2</span> The working directory</h2>
+<p>Whenever you create a new project, RStudio automatically sets your <strong>working directory</strong> to that specific folder where you created the project.</p>
+<p>What is the working directory and why is it important?</p>
+<p>The working directory (wd) is, essentially, the point of reference for the particular project you are working on. The Files pane in RStudio (lower-right pane) will display the files and folders in your current wd. And wenever you want to refer to external files in your R code, your wd will once more be your point of reference and you can use <em>relative</em> file-paths (relative to the wd), as opposed to absolute file paths (would need to type the entire path).</p>
+<p>For example, lets say you create a new project called <em>DataWrangling</em>. And in there, you create an RScript called script.R; this is where you are writing your R code. Now lets say you have a CSV file called meals.csv where you are keeping a meal schedule, and you want to manipulate some of that data in R. Well, if you copy the meals.csv file to your working directory, you can access that file using a <strong>relative path</strong>. For example, to store the contents of the file you would be able to use a command like the following:</p>
+<pre><code>mealsFrameRelative &lt;- read.csv(&#39;meals.csv&#39;)</code></pre>
+<p>The absolute path for the file would look like this (see how much longer it is):</p>
+<pre><code>mealsFrameAbsolute &lt;- read.csv(&#39;Users/gian/sites/R/DataWrangling/meals.csv&#39;)</code></pre>
+<p>In order to see your current working directory, use getwd():</p>
+<pre><code>getwd()</code></pre>
+<p>To change it to somewhere else, use setwd():</p>
+<pre><code>setwd(&#39;path/to/new/directory&#39;)</code></pre>
+<p>The main thing to remember is: each project will have its own working directory, usually the folder where you created the project, but this can be changed with setwd().</p>
+<p>If you have a Mac, I suggest that you keep your R projects under User &gt; Sites &gt; R &gt; [ProjectName]</p>
+<p>For example, here I have a few projects under my Sites &gt; R directory: <img src="images/wd.png" /></p>
+</div>
+<div id="r-and-rstudio-tips" class="section level2">
+<h2><span class="header-section-number">2.3</span> R and RStudio tips</h2>
+<div id="organizing-your-working-directory" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> Organizing your working directory</h3>
+<p>Usually, when you start an R projects, you will be working with a variety of different files, often of different types. For example, you have your R scripts which end with the file extension <em>.R</em>. You also likely will use data files such as CSV or Excel or SPSS files. If you write reports, you will also likely have PDF and Word files. A good way to organize all of these files in a logical manner is to, inside of your working directory, create the following folders:</p>
+<ul>
+<li><strong>scripts</strong> - to keep your .R and .RMd (markdown) files.</li>
+<li><strong>data</strong> - to keep all your data files that you will use to work with.</li>
+<li><strong>reports</strong> - to keep your output documents and reports.</li>
+</ul>
+<p>This is how it would look in practice, if I have a project called <em>DataWrangling</em> and I have the previously mentioned folder structure: <img src="images/structure.png" /></p>
+</div>
+<div id="other-ways-to-use-r" class="section level3">
+<h3><span class="header-section-number">2.3.2</span> Other ways to use R</h3>
+<p>Even though RStudio is the main and preferred way to interact with R, it is not the only way.</p>
+<p>Once R is installed, it can be run from the Mac/Windows terminal or console using the command <em>R</em>, which will trigger the interactive mode and you will be able to type R commands. This is useful to remember because you can also type</p>
+<pre><code>R myScript.R</code></pre>
+<p>From the terminal/console and it will automatically execute whatever code you have in the file called myScript.R. In the programming world, we call this <em>working from the command line</em> (meaning, working without an interface, directly into the terminal/console).</p>
+<p>Also remember, to write R code (or any programming language), all you need is a text editor. You don’t need to use RStudio to write R, although it is preferred, and you can view/edit R files with the default text editor, or more specialized coding-oriented text editors such as <a href="https://code.visualstudio.com">VS Code</a>. Whatever you use to write R code, you can later open it and edit it with RStudio if you prefer. This is a useful tip if you ever have to write R in a computer that does not have RStudio installed. Just remember to save the file with the <em>.R</em> extension.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/01-intro.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

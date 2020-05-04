@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 R Language Basics | Learn R for Data Wrangling</title>
+  <meta name="description" content="This is a bookdown website exploring the basics of learning R for data wrangling and data science." />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 R Language Basics | Learn R for Data Wrangling" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a bookdown website exploring the basics of learning R for data wrangling and data science." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 R Language Basics | Learn R for Data Wrangling" />
+  
+  <meta name="twitter:description" content="This is a bookdown website exploring the basics of learning R for data wrangling and data science." />
+  
+
+<meta name="author" content="GA for TC" />
+
+
+<meta name="date" content="2020-04-28" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intro.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">An interactive book</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#what-to-expect"><i class="fa fa-check"></i><b>1.1</b> What to expect</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#resources-needed"><i class="fa fa-check"></i><b>1.2</b> Resources Needed:</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#what-is-r"><i class="fa fa-check"></i><b>1.3</b> What is R?</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#is-it-worth-learning-r-for-data-wranglingdata-science-as-opposed-to-other-languages-like-python"><i class="fa fa-check"></i><b>1.4</b> Is it worth learning R for data wrangling/data science as opposed to other languages like Python?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction to R and RStudio</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#the-rstudio-interface"><i class="fa fa-check"></i><b>2.1</b> The RStudio interface</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="intro.html"><a href="intro.html#the-code-editor"><i class="fa fa-check"></i><b>2.1.1</b> The Code Editor</a></li>
+<li class="chapter" data-level="2.1.2" data-path="intro.html"><a href="intro.html#the-r-console"><i class="fa fa-check"></i><b>2.1.2</b> The R Console</a></li>
+<li class="chapter" data-level="2.1.3" data-path="intro.html"><a href="intro.html#the-workspace-and-history-pane"><i class="fa fa-check"></i><b>2.1.3</b> The Workspace and History pane</a></li>
+<li class="chapter" data-level="2.1.4" data-path="intro.html"><a href="intro.html#the-file-and-plots-or-miscellaneous-pane"><i class="fa fa-check"></i><b>2.1.4</b> The File and Plots (or Miscellaneous) pane</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#the-working-directory"><i class="fa fa-check"></i><b>2.2</b> The working directory</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#r-and-rstudio-tips"><i class="fa fa-check"></i><b>2.3</b> R and RStudio tips</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="intro.html"><a href="intro.html#organizing-your-working-directory"><i class="fa fa-check"></i><b>2.3.1</b> Organizing your working directory</a></li>
+<li class="chapter" data-level="2.3.2" data-path="intro.html"><a href="intro.html#other-ways-to-use-r"><i class="fa fa-check"></i><b>2.3.2</b> Other ways to use R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="r-language-basics.html"><a href="r-language-basics.html"><i class="fa fa-check"></i><b>3</b> R Language Basics</a><ul>
+<li class="chapter" data-level="3.1" data-path="r-language-basics.html"><a href="r-language-basics.html#objectives"><i class="fa fa-check"></i><b>3.1</b> Objectives</a></li>
+<li class="chapter" data-level="3.2" data-path="r-language-basics.html"><a href="r-language-basics.html#glossary-of-terms"><i class="fa fa-check"></i><b>3.2</b> Glossary of terms</a></li>
+<li class="chapter" data-level="3.3" data-path="r-language-basics.html"><a href="r-language-basics.html#creating-a-new-r-project"><i class="fa fa-check"></i><b>3.3</b> Creating a new R project</a></li>
+<li class="chapter" data-level="3.4" data-path="r-language-basics.html"><a href="r-language-basics.html#getting-started-with-code"><i class="fa fa-check"></i><b>3.4</b> Getting started with code</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="r-language-basics.html"><a href="r-language-basics.html#creating-objects"><i class="fa fa-check"></i><b>3.4.1</b> Creating objects</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="r-language-basics.html"><a href="r-language-basics.html#objects-and-assignment-of-values"><i class="fa fa-check"></i><b>3.5</b> Objects and assignment of values</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="r-language-basics.html"><a href="r-language-basics.html#which-assignment-operator-to-use"><i class="fa fa-check"></i><b>3.5.1</b> Which assignment operator to use</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="r-language-basics.html"><a href="r-language-basics.html#comments"><i class="fa fa-check"></i><b>3.6</b> Comments</a></li>
+<li class="chapter" data-level="3.7" data-path="r-language-basics.html"><a href="r-language-basics.html#functions-and-arguments"><i class="fa fa-check"></i><b>3.7</b> Functions and arguments</a></li>
+<li class="chapter" data-level="3.8" data-path="r-language-basics.html"><a href="r-language-basics.html#types-of-objects"><i class="fa fa-check"></i><b>3.8</b> Types of objects</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="r-language-basics.html"><a href="r-language-basics.html#vectors"><i class="fa fa-check"></i><b>3.8.1</b> Vectors</a></li>
+<li class="chapter" data-level="3.8.2" data-path="r-language-basics.html"><a href="r-language-basics.html#matrix"><i class="fa fa-check"></i><b>3.8.2</b> Matrix</a></li>
+<li class="chapter" data-level="3.8.3" data-path="r-language-basics.html"><a href="r-language-basics.html#list"><i class="fa fa-check"></i><b>3.8.3</b> List</a></li>
+<li class="chapter" data-level="3.8.4" data-path="r-language-basics.html"><a href="r-language-basics.html#data-frame"><i class="fa fa-check"></i><b>3.8.4</b> Data frame</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="r-language-basics.html"><a href="r-language-basics.html#missing-data"><i class="fa fa-check"></i><b>3.9</b> Missing data</a></li>
+<li class="chapter" data-level="3.10" data-path="r-language-basics.html"><a href="r-language-basics.html#help-and-documentation"><i class="fa fa-check"></i><b>3.10</b> Help and documentation</a></li>
+<li class="chapter" data-level="3.11" data-path="r-language-basics.html"><a href="r-language-basics.html#extra-topic-naming-and-notation"><i class="fa fa-check"></i><b>3.11</b> Extra topic: Naming and notation</a></li>
+<li class="chapter" data-level="3.12" data-path="r-language-basics.html"><a href="r-language-basics.html#challenge"><i class="fa fa-check"></i><b>3.12</b> Challenge</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Learn R for Data Wrangling</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="r-language-basics" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> R Language Basics</h1>
+<div id="objectives" class="section level2">
+<h2><span class="header-section-number">3.1</span> Objectives</h2>
+<ol style="list-style-type: decimal">
+<li>To get a refresher on the basics of R programming.</li>
+<li>To understand objects and functions.</li>
+<li>Learn how to create and use vectors.</li>
+<li>Learn how to deal with missing data.</li>
+<li>Learn how to use the help and documentation.</li>
+</ol>
+</div>
+<div id="glossary-of-terms" class="section level2">
+<h2><span class="header-section-number">3.2</span> Glossary of terms</h2>
+<ul>
+<li><strong>Project</strong>: An R project consisting of a main folder (as the working directory), and all the files within.</li>
+<li><strong>Object</strong>: An R variable. This can be a single value, a vector, list, matrix, data frame or other. Almost everything in R is referred to as an object, though there are several types of objects.</li>
+<li><strong>Function</strong>: A command in R that executes a specific action and usually returns a value. For example, the <code>sum()</code> function usually takes values for addition as arguments, and returns the sum.</li>
+<li><strong>Arguments</strong>: These are values or inputs passed into functions. For example in the function <code>sum(a, b)</code>, a and b are <em>arguments</em> to the sum function. These will be added and the sum will be returned. Functions usually have documentation where they specify which arguments are required for the function to work properly.</li>
+<li><strong>Package</strong>: A package, sometimes called a <strong>library</strong>, is a set of related pre-created functions in R. It is code that has been written by other people and then packaged together so that others can download the code and re-use it. For example, if somebody were to write code about how to simulate and model the behavior of an epidemic or infectious disease, they could create a package with the related code and documentation, so that others can benefit and use it as well.</li>
+</ul>
+</div>
+<div id="creating-a-new-r-project" class="section level2">
+<h2><span class="header-section-number">3.3</span> Creating a new R project</h2>
+<p>To start, lets create a new project in R and call it DataWrangling. As mentioned, it is recommended to create this project in the directory <code>user/sites/R/</code>.</p>
+<p>Click on the <em>File &gt; New Project</em> and then select <em>New Directory &gt; New Project &gt; [Select directory and enter project name] &gt; Create</em>.</p>
+<p>Once the project is created, create a new R script by going to <em>File &gt; New File &gt; R Script</em>.</p>
+</div>
+<div id="getting-started-with-code" class="section level2">
+<h2><span class="header-section-number">3.4</span> Getting started with code</h2>
+<div id="creating-objects" class="section level3">
+<h3><span class="header-section-number">3.4.1</span> Creating objects</h3>
+<p>For the purpose of learning the basics of R coding, we will refer to this <a href="https://cengel.github.io/R-intro/gettingstarted.html">excellent online resource</a>. In addition to that, I will provide a summmary of the important points.</p>
+</div>
+</div>
+<div id="objects-and-assignment-of-values" class="section level2">
+<h2><span class="header-section-number">3.5</span> Objects and assignment of values</h2>
+<p>To create an objects and assign values:</p>
+<pre><code>object1 &lt;- 5
+object2 &lt;- 10
+
+object3 &lt;- object1 + object2</code></pre>
+<div id="which-assignment-operator-to-use" class="section level3">
+<h3><span class="header-section-number">3.5.1</span> Which assignment operator to use</h3>
+<p>The traditional assignment operator in R is the left-facing arrow <code>&lt;-</code>. With time, the language also evolved to use the equal-sign <code>=</code> for this same purpoose. However, the standard practice is to always use the arrow operator <code>&lt;-</code> for assigning values to objects, and to use the equal sign <code>=</code> to specify function arguments. For example:</p>
+<pre><code>newPerson &lt;- createNewPerson(name = &quot;John Doe&quot;, age = 45)</code></pre>
+<p>In the previous example, the function <code>createNewPerson()</code> is called and two arguments (<code>name</code> and <code>age</code>) are provided. The result of the function is then assigned to the object <code>newPerson</code>. Note that the values provided to the arguments were specified using the equal-sign <code>=</code> while the assignment of the resulting value to the newPerson object was donw with the assignmment arrow operator <code>&lt;-</code>.</p>
+<p><strong>Tip</strong>: Use <code>option</code> + <code>-</code> in Mac or <code>alt</code> + <code>-</code> in PC and RStudio will type in the arrow operator for you. This is very convenient and saves time and keystrokes.</p>
+</div>
+</div>
+<div id="comments" class="section level2">
+<h2><span class="header-section-number">3.6</span> Comments</h2>
+<p>Use the pound or hash sign <code>#</code> to write comments in your code. Comments are non-executable pieces of writing that help explain your code.</p>
+<p>Sometimes, it is useful to “comment out” R code that is not currently being used, or when you want intend to delete a piece of code but are not sure yet if it is the write decision. You can add # to the beginning of each line of code that you want to be skipped during execution.</p>
+<p><strong>Tip</strong>: To comment out large chunks of code at a time, select/highlight the code and then use <code>commmand</code> + <code>shift</code> + c (or <code>ctrl</code> + <code>shift</code> + c in Windows). Select the same code and press the same sequence of keys to un-comment the code later, if necessary.</p>
+</div>
+<div id="functions-and-arguments" class="section level2">
+<h2><span class="header-section-number">3.7</span> Functions and arguments</h2>
+<p>A function takes inputs and returns a value - the result of the function. A function executes pre-written commands using the arguments (inputs) provided, and returns the result. For example executing the code <code>sum(1,3,5)</code> will return the value <code>9</code>.</p>
+<p>Many functions have arguments that need to be provided explicitly. For example, the following function:</p>
+<pre><code>createNewPerson(name = &quot;John Doe&quot;, age = 45)</code></pre>
+<p>Has two arguments that must be explicitly specified (written out) when __calling*__ the function.</p>
+<p>*Calling a function is the term used when a function is executed in the code.</p>
+</div>
+<div id="types-of-objects" class="section level2">
+<h2><span class="header-section-number">3.8</span> Types of objects</h2>
+<div id="vectors" class="section level3">
+<h3><span class="header-section-number">3.8.1</span> Vectors</h3>
+<p>Vectors are the most common type of object in R, and consist of a group or sequence of values (in other programming languages, vectors are called ‘arrays’). A vector is defined using the c() function. For example:</p>
+<pre><code>ageVector &lt;- c(19,22,20,18,18,19,22,21)</code></pre>
+<p>In the previous code, I created a vector called ageVector by using the c() function to combine a group of values into a vector.</p>
+<p>There are several R functions that help you get information on vectors (and other objects), such as:</p>
+<ul>
+<li><code>length()</code>: Tells you the number of elements (distinct values) in the vector.</li>
+<li><code>class()</code>: The type of data contained in the vector (such as numeric or string/character)</li>
+<li><code>str()</code>: Detailed information about the structure and contents of the vector, including length and class, but other details as well.</li>
+</ul>
+<div id="subsetting-vectors" class="section level4">
+<h4><span class="header-section-number">3.8.1.1</span> Subsetting vectors</h4>
+<p>Subset vectors by using brackets [] after the object name and then specifying the index of the element/value you are interested in.</p>
+<pre><code>ageVector[1]</code></pre>
+<p>Returns the first value in the vector.</p>
+<pre><code>ageVector[c(1,2,4)]</code></pre>
+<p>Returns the first, second and fourth values.</p>
+<pre><code>ageVector[-1]</code></pre>
+<p>Returns all values <em>except</em> the first.</p>
+<pre><code>ageVector[-c(1,3,5)]</code></pre>
+<p>Returns all values <em>except</em> the first, third and firth values.</p>
+<pre><code>ageVector[2:5]</code></pre>
+<p>Returns all values between the second and fifth, inclusive.</p>
+</div>
+</div>
+<div id="matrix" class="section level3">
+<h3><span class="header-section-number">3.8.2</span> Matrix</h3>
+<p>A matrix consists of rows and columns. All columns must be of the same length as well as all rows (Eg: cant have a row with 3 entries and another with 5). To construct a matrix, we use a function conveniently called matrix().</p>
+<p><code>y &lt;- matrix(1:20, nrow=5,ncol=4) # generates 5 x 4 numeric matrix</code></p>
+<p>Subset a matrix with [row , column]:</p>
+<pre><code>y[,4]       # 4th column of matrix
+y[3,]       # 3rd row of matrix
+y[2:4,1:3]  # rows 2,3,4 of columns 1,2,3</code></pre>
+</div>
+<div id="list" class="section level3">
+<h3><span class="header-section-number">3.8.3</span> List</h3>
+<p>Lists can have elements of any type and length. To construct one, use the list() function:</p>
+<pre><code>myl &lt;- list(id=&quot;ID_1&quot;, a_vector=animals, a_matrix=y, age=5.3) # example of a list with 4 components
+myl[[2]] # 2nd component of the list
+myl[[&quot;id&quot;]] # component named id in list</code></pre>
+</div>
+<div id="data-frame" class="section level3">
+<h3><span class="header-section-number">3.8.4</span> Data frame</h3>
+<p>Data frames in R is like a mixture of lists and matrices. You have a set named columns each of which can be of different type (like in a list), but all columns must be of same length (like in a matrix). A way to think about a data frame is like a table in Excel and is commonly used to store tabular-type data.</p>
+<p>Here is how you could construct a data frame.</p>
+<pre><code>mydf &lt;- data.frame(ID=c(1:4),
+                   Color=c(&quot;red&quot;, &quot;white&quot;, &quot;red&quot;, NA),
+                   Passed=c(TRUE,TRUE,TRUE,FALSE),
+                   Weight=c(99, 54, 85, 70),
+                   Height=c(1.78, 1.67, 1.82, 1.59))
+
+mydf</code></pre>
+</div>
+</div>
+<div id="missing-data" class="section level2">
+<h2><span class="header-section-number">3.9</span> Missing data</h2>
+<p>R automatically codes missing data with the <code>NA</code> value. Datasets that have missing data can be processed with a variety of ways that will help you decide how to deal with these missing values. Dealing with missing values is important when operating with rows and columns of data. For example, you might want to add all values in a row to get a total, but what happens if you have a bunch of NAs?</p>
+<p>There are two main ways:</p>
+<ol style="list-style-type: decimal">
+<li>Using the <strong>na.rm</strong> argument. Many functions such as sum() and mean() have an argument called <strong>na.rm</strong> (basically: NA remove) which you can set to TRUE in order to ignore missing values. For example:</li>
+</ol>
+<pre><code>heightVector &lt;- c(110, 120, NA, NA, 100, NA)
+
+avgHeight &lt;- mean(heightVector, na.rm = TRUE)</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Use functions such as <code>na.omit()</code> or <code>is.na()</code>. For example:</li>
+</ol>
+<pre><code>heightVector &lt;- c(110, 120, NA, NA, 100, NA)
+
+avgHeight &lt;- mean(na.omit(heightVector))</code></pre>
+<p>or</p>
+<pre><code>heightVector &lt;- c(110, 120, NA, NA, 100, NA)
+
+avgHeight &lt;- mean(!is.na(heightVector))</code></pre>
+<p>Note the exlamation point before !is.na(), which makes sure that the function returns the values that are <strong>not</strong> NA. Otherwise, is.na() returns values that <strong>are</strong> NA. The exclamation point negates or reverses the operation.</p>
+</div>
+<div id="help-and-documentation" class="section level2">
+<h2><span class="header-section-number">3.10</span> Help and documentation</h2>
+<p>For general R help, look at the ‘Help’ tab in the Files and Miscellaneous pane.
+For quick help relating to any function or package, use the question mark <code>?</code> before the name of a function or package.</p>
+<pre><code>?sum</code></pre>
+<p>Will open up the documentation for the sum() function and tell you how to use it.</p>
+</div>
+<div id="extra-topic-naming-and-notation" class="section level2">
+<h2><span class="header-section-number">3.11</span> Extra topic: Naming and notation</h2>
+<p>Objects or variables can have practically any namme, but there are some rules:</p>
+<ol style="list-style-type: decimal">
+<li>Cannot start with a number, but can have numbers in the name.
+<ul>
+<li><code>1time</code> is not valid, but <code>time1</code> and <code>time1result</code> are valid.</li>
+</ul></li>
+<li>Cannot be one of key-words or reserved words in R. For example, terms such as <code>if</code>, <code>else</code>, <code>for</code>, and <code>function</code> already have specific uses in R and cannot be used for names of objects.</li>
+<li>Must be descriptive, but succint.</li>
+<li>Are case sensitive: <code>value1</code> is not the same as <code>Value1</code>, these are different objects.</li>
+</ol>
+<p>In addition, there are several styles for naming and writing object names, especially if the name consists of more than one “English” word. For example, I previously referred to an object called <code>newPerson</code>. A different programmer maybe would have preferred to name it <code>new_person</code> instead. This is what we refer to when we talk about naming-styles or naming-conventions. The main styles are as follows:</p>
+<ul>
+<li>Camel-case: the first word is small-letters, but all other words start with a capital letter.
+<ul>
+<li>Eg: <code>newPerson</code>, <code>verySmallChild</code>, <code>totalSum</code>.</li>
+</ul></li>
+<li>Underscore sepatator: Uses underscores <code>_</code> to separate the words.
+<ul>
+<li>Eg: <code>new_person</code>, <code>very_small_child</code>, <code>total_sum</code>.</li>
+</ul></li>
+<li>All small: The entire name is in small letters.
+<ul>
+<li>Eg; <code>newperson</code>, <code>verysmallchild</code>, <code>totalsum</code>.</li>
+</ul></li>
+</ul>
+<p>The important thing about notation styling is to just be consistent. I personally preferr to use <code>camelCase</code> for object and variable notation in programming language. However, when working with databases and the SQL language, it is recommended to use <code>underscore_separators</code> to name your tables and table-fields (columns). Therefore, when creating tables (or data frames) in R, I will typically use <code>underscore_separators</code> when naming the columns; but I will use <code>camelCase</code> for the names of any other kind of object. Eg:</p>
+<pre><code>salesTable &lt;- data.table(value_one, value_two, total_sales)</code></pre>
+<p>The previous example is not really valid R code, but it illustrates the naming convention principles that were previously discussed.</p>
+</div>
+<div id="challenge" class="section level2">
+<h2><span class="header-section-number">3.12</span> Challenge</h2>
+<p><img src="images/challenge1.png" /></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-basics.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

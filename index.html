@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Learn R for Data Wrangling</title>
+  <meta name="description" content="This is a bookdown website exploring the basics of learning R for data wrangling and data science." />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Learn R for Data Wrangling" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a bookdown website exploring the basics of learning R for data wrangling and data science." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Learn R for Data Wrangling" />
+  
+  <meta name="twitter:description" content="This is a bookdown website exploring the basics of learning R for data wrangling and data science." />
+  
+
+<meta name="author" content="GA for TC" />
+
+
+<meta name="date" content="2020-04-28" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="intro.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">An interactive book</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#what-to-expect"><i class="fa fa-check"></i><b>1.1</b> What to expect</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#resources-needed"><i class="fa fa-check"></i><b>1.2</b> Resources Needed:</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#what-is-r"><i class="fa fa-check"></i><b>1.3</b> What is R?</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#is-it-worth-learning-r-for-data-wranglingdata-science-as-opposed-to-other-languages-like-python"><i class="fa fa-check"></i><b>1.4</b> Is it worth learning R for data wrangling/data science as opposed to other languages like Python?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction to R and RStudio</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#the-rstudio-interface"><i class="fa fa-check"></i><b>2.1</b> The RStudio interface</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="intro.html"><a href="intro.html#the-code-editor"><i class="fa fa-check"></i><b>2.1.1</b> The Code Editor</a></li>
+<li class="chapter" data-level="2.1.2" data-path="intro.html"><a href="intro.html#the-r-console"><i class="fa fa-check"></i><b>2.1.2</b> The R Console</a></li>
+<li class="chapter" data-level="2.1.3" data-path="intro.html"><a href="intro.html#the-workspace-and-history-pane"><i class="fa fa-check"></i><b>2.1.3</b> The Workspace and History pane</a></li>
+<li class="chapter" data-level="2.1.4" data-path="intro.html"><a href="intro.html#the-file-and-plots-or-miscellaneous-pane"><i class="fa fa-check"></i><b>2.1.4</b> The File and Plots (or Miscellaneous) pane</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#the-working-directory"><i class="fa fa-check"></i><b>2.2</b> The working directory</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#r-and-rstudio-tips"><i class="fa fa-check"></i><b>2.3</b> R and RStudio tips</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="intro.html"><a href="intro.html#organizing-your-working-directory"><i class="fa fa-check"></i><b>2.3.1</b> Organizing your working directory</a></li>
+<li class="chapter" data-level="2.3.2" data-path="intro.html"><a href="intro.html#other-ways-to-use-r"><i class="fa fa-check"></i><b>2.3.2</b> Other ways to use R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="r-language-basics.html"><a href="r-language-basics.html"><i class="fa fa-check"></i><b>3</b> R Language Basics</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Learn R for Data Wrangling</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Learn R for Data Wrangling</h1>
+<p class="author"><em>GA for TC</em></p>
+<p class="date"><em>2020-04-28</em></p>
+</div>
+<div id="prerequisites" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Prerequisites</h1>
+<div id="what-to-expect" class="section level2">
+<h2><span class="header-section-number">1.1</span> What to expect</h2>
+<p>This site will cover basic and intermediate topics in learning the use of R for <strong>data wrangling</strong> and visualization. This will serve as an introduction for data science. The basics of R and RStudio will be revisited, with some tips and tricks included, before moving on to using the Tidyverse library for manipulating, exploring and visualizing data.</p>
+<p>The main tools that will be used are RStudio and the packages in the Tidyverse library, including dplyr, tidyr, ggplot2 and readr.</p>
+<p>The general mode of operation will be to introduce R topics in sequence and to provide hand-picked apropriate online resources for those topics. However, some chapters, particularly the introductory ones, will have relatively extensive hand-written material. Other chapters might only provide summaries and supplementary comments to the provided online resources.</p>
+</div>
+<div id="resources-needed" class="section level2">
+<h2><span class="header-section-number">1.2</span> Resources Needed:</h2>
+<ul>
+<li>R</li>
+<li>RStudio</li>
+<li>Web Browser</li>
+</ul>
+<p>This tutorial assumes that R and RStudio have already been installed, but a link to installation instructions is provided.</p>
+</div>
+<div id="what-is-r" class="section level2">
+<h2><span class="header-section-number">1.3</span> What is R?</h2>
+<p>Such a simple question, but one worth answering. In short, the creators of the language originally defined it as ‘a programming language for data analysis and graphics’ (Ihaka and Gentleman 1996). However, it has grown to much more than that. R can now be called <em>a powerful integrated environment for data processing, data analysis, graphics and reporting</em>. R is <em>open-source</em>, meaning that users of R have access to the basecode and can contribute to the development and improvement of the language. This has led to an expansion of the use of R accross academia and the industry, with applications in official statistics, data science, machine-learning, web-scraping, interactive visualizations and more! R is a powerful tool that continues to improve and expand.</p>
+</div>
+<div id="is-it-worth-learning-r-for-data-wranglingdata-science-as-opposed-to-other-languages-like-python" class="section level2">
+<h2><span class="header-section-number">1.4</span> Is it worth learning R for data wrangling/data science as opposed to other languages like Python?</h2>
+<p>It is very much worth learning R. On the statistics side of things, R is used so extensively across academia because its tools and packages are very strongly developed and validated against standards for statistical practice and analysis.</p>
+<blockquote>
+<p>“R is probably the most thoroughly validated statistics software on Earth.” – Uwe Ligges, CRAN maintainer (useR!2017).</p>
+</blockquote>
+<p>Therefore, for somebody that works in Official Statistics or academia, R is an easy choice. However, many people working in the industry or private sector prefer other tools such as Python, especially when it comes to data science and data analytics. Are these tools better than R? Not necessarily. Although all tools, softwares and languages have their pros and cons, R offers some very compelling advantages.</p>
+<p><strong>Firstly</strong>, R is more specialized. R was <em>created</em> for statisitcal analysis and data manipulation. It was built by statisticians for statisticians and therefore considered the best language for statistical analysis and modeling. For example, R provides many easy ways to deal with missing values, and it has many well-built packages for survey data analysis. R is also believed to be the best language out there for data visualization through graphs, plots, etc.</p>
+<p><strong>Secondly</strong>, R has perhaps the best data-wrangling software on earth: Tidyverse. Tidyverse is a library containing a set of packages that vastly improve the data processing and data-wrangling capabalities of R. For example, it allows for easy reshaping, filtering, cleaning and querying of large datasets (dplyr and tidyr). It offers tools for quickly reading and writing files from different formats such as text, Excel, SPSS, STATA and more (readr package). Ggplot2 is perhaps the most popular graphing and visualization software there is, that allows plots and graphs to be build layer by layer in a very logical way.</p>
+<p><strong>Third</strong>, R has many other extended features that will help you in your data analysis workflow. Do you need to write a report with graphs, illustrations and tables? There is RMarkdown for that. Do you need an interactive website for running statistical models and visualizations? R Shiny was created for that purpose.</p>
+<p><strong>All</strong> of these advantages are unified by what is believed to be one of the best overall best programming IDE* out there: RStudio. RStudio is extremely powerful and flexible development environment, and it integrates all of what makes R so great. At the end of the day, it is all these advantages together that mmakes R such a commpelling sofware to learn.</p>
+<p>That beig said, Python is considered to be better at general programming, machine learning and webscraping, and the data-science field on a whole leans more towards Python. However, R is still a major player in data science and it is absolutely worth learning data science with R. In addition, you will still be able to use Python modules and commands in R using the R Package ‘Reticulate’. Reticulate allows you to import and run Python code right in R. You can have the best of both worlds!</p>
+<p>In conclusion, if you are a statistician or in academia, R is the way to go; and when you learn programming in R, you can apply these concepts later on in any other language, such as Python.</p>
+<p>Now, let’s take a look at starting to use R and RStudio.</p>
+<p>*An IDE (Integrated Developoment Environment) is a program that provides many facilities for programmers to write, test and develop programs. It usually provides tools to manage the workflow and extensions to make coding easier. RStudio is considered by many the best IDE there is.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
