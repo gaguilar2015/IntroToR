@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Data Manipulation with dplyr | Learn R for Data Wrangling</title>
+  <meta name="description" content="This is a bookdown website exploring the basics of learning R for data wrangling and data science." />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Data Manipulation with dplyr | Learn R for Data Wrangling" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a bookdown website exploring the basics of learning R for data wrangling and data science." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Data Manipulation with dplyr | Learn R for Data Wrangling" />
+  
+  <meta name="twitter:description" content="This is a bookdown website exploring the basics of learning R for data wrangling and data science." />
+  
+
+<meta name="author" content="GA for TC" />
+
+
+<meta name="date" content="2020-04-28" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="r-language-basics.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">An interactive book</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#what-to-expect"><i class="fa fa-check"></i><b>1.1</b> What to expect</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#resources-needed"><i class="fa fa-check"></i><b>1.2</b> Resources Needed:</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#what-is-r"><i class="fa fa-check"></i><b>1.3</b> What is R?</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#is-it-worth-learning-r-for-data-wranglingdata-science-as-opposed-to-other-languages-like-python"><i class="fa fa-check"></i><b>1.4</b> Is it worth learning R for data wrangling/data science as opposed to other languages like Python?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction to R and RStudio</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#the-rstudio-interface"><i class="fa fa-check"></i><b>2.1</b> The RStudio interface</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="intro.html"><a href="intro.html#the-code-editor"><i class="fa fa-check"></i><b>2.1.1</b> The Code Editor</a></li>
+<li class="chapter" data-level="2.1.2" data-path="intro.html"><a href="intro.html#the-r-console"><i class="fa fa-check"></i><b>2.1.2</b> The R Console</a></li>
+<li class="chapter" data-level="2.1.3" data-path="intro.html"><a href="intro.html#the-workspace-and-history-pane"><i class="fa fa-check"></i><b>2.1.3</b> The Workspace and History pane</a></li>
+<li class="chapter" data-level="2.1.4" data-path="intro.html"><a href="intro.html#the-file-and-plots-or-miscellaneous-pane"><i class="fa fa-check"></i><b>2.1.4</b> The File and Plots (or Miscellaneous) pane</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#the-working-directory"><i class="fa fa-check"></i><b>2.2</b> The working directory</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#r-and-rstudio-tips"><i class="fa fa-check"></i><b>2.3</b> R and RStudio tips</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="intro.html"><a href="intro.html#organizing-your-working-directory"><i class="fa fa-check"></i><b>2.3.1</b> Organizing your working directory</a></li>
+<li class="chapter" data-level="2.3.2" data-path="intro.html"><a href="intro.html#other-ways-to-use-r"><i class="fa fa-check"></i><b>2.3.2</b> Other ways to use R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="r-language-basics.html"><a href="r-language-basics.html"><i class="fa fa-check"></i><b>3</b> R Language Basics</a><ul>
+<li class="chapter" data-level="3.1" data-path="r-language-basics.html"><a href="r-language-basics.html#objectives"><i class="fa fa-check"></i><b>3.1</b> Objectives</a></li>
+<li class="chapter" data-level="3.2" data-path="r-language-basics.html"><a href="r-language-basics.html#glossary-of-terms"><i class="fa fa-check"></i><b>3.2</b> Glossary of terms</a></li>
+<li class="chapter" data-level="3.3" data-path="r-language-basics.html"><a href="r-language-basics.html#creating-a-new-r-project"><i class="fa fa-check"></i><b>3.3</b> Creating a new R project</a></li>
+<li class="chapter" data-level="3.4" data-path="r-language-basics.html"><a href="r-language-basics.html#getting-started-with-r-code"><i class="fa fa-check"></i><b>3.4</b> Getting started with R code</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="r-language-basics.html"><a href="r-language-basics.html#creating-objects"><i class="fa fa-check"></i><b>3.4.1</b> Creating objects</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="r-language-basics.html"><a href="r-language-basics.html#objects-and-assignment-of-values"><i class="fa fa-check"></i><b>3.5</b> Objects and assignment of values</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="r-language-basics.html"><a href="r-language-basics.html#which-assignment-operator-to-use"><i class="fa fa-check"></i><b>3.5.1</b> Which assignment operator to use</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="r-language-basics.html"><a href="r-language-basics.html#functions-and-arguments"><i class="fa fa-check"></i><b>3.6</b> Functions and arguments</a></li>
+<li class="chapter" data-level="3.7" data-path="r-language-basics.html"><a href="r-language-basics.html#types-of-objects"><i class="fa fa-check"></i><b>3.7</b> Types of objects</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="r-language-basics.html"><a href="r-language-basics.html#vectors"><i class="fa fa-check"></i><b>3.7.1</b> Vectors</a></li>
+<li class="chapter" data-level="3.7.2" data-path="r-language-basics.html"><a href="r-language-basics.html#matrix"><i class="fa fa-check"></i><b>3.7.2</b> Matrix</a></li>
+<li class="chapter" data-level="3.7.3" data-path="r-language-basics.html"><a href="r-language-basics.html#list"><i class="fa fa-check"></i><b>3.7.3</b> List</a></li>
+<li class="chapter" data-level="3.7.4" data-path="r-language-basics.html"><a href="r-language-basics.html#data-frame"><i class="fa fa-check"></i><b>3.7.4</b> Data frame</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="r-language-basics.html"><a href="r-language-basics.html#missing-data"><i class="fa fa-check"></i><b>3.8</b> Missing data</a></li>
+<li class="chapter" data-level="3.9" data-path="r-language-basics.html"><a href="r-language-basics.html#installing-packages"><i class="fa fa-check"></i><b>3.9</b> Installing packages</a></li>
+<li class="chapter" data-level="3.10" data-path="r-language-basics.html"><a href="r-language-basics.html#help-and-documentation"><i class="fa fa-check"></i><b>3.10</b> Help and documentation</a></li>
+<li class="chapter" data-level="3.11" data-path="r-language-basics.html"><a href="r-language-basics.html#comments"><i class="fa fa-check"></i><b>3.11</b> Comments</a></li>
+<li class="chapter" data-level="3.12" data-path="r-language-basics.html"><a href="r-language-basics.html#extra-topic-naming-and-notation"><i class="fa fa-check"></i><b>3.12</b> Extra topic: Naming and notation</a></li>
+<li class="chapter" data-level="3.13" data-path="r-language-basics.html"><a href="r-language-basics.html#challenge"><i class="fa fa-check"></i><b>3.13</b> Challenge</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html"><i class="fa fa-check"></i><b>4</b> Data Manipulation with <code>dplyr</code></a><ul>
+<li class="chapter" data-level="4.1" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#objectives-1"><i class="fa fa-check"></i><b>4.1</b> Objectives</a></li>
+<li class="chapter" data-level="4.2" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#importing-data"><i class="fa fa-check"></i><b>4.2</b> Importing Data</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#importing-excel-data"><i class="fa fa-check"></i><b>4.2.1</b> Importing Excel data</a></li>
+<li class="chapter" data-level="4.2.2" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#importing-csv-or-text-data"><i class="fa fa-check"></i><b>4.2.2</b> Importing CSV or text data</a></li>
+<li class="chapter" data-level="4.2.3" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#importing-spss-data"><i class="fa fa-check"></i><b>4.2.3</b> Importing SPSS data</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#the-pipe-operator"><i class="fa fa-check"></i><b>4.3</b> The pipe %&gt;% operator</a></li>
+<li class="chapter" data-level="4.4" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#subsetting-data-with-dplyr"><i class="fa fa-check"></i><b>4.4</b> Subsetting data with Dplyr</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#using-filter"><i class="fa fa-check"></i><b>4.4.1</b> Using filter</a></li>
+<li class="chapter" data-level="4.4.2" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#using-select"><i class="fa fa-check"></i><b>4.4.2</b> Using select</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Learn R for Data Wrangling</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-manipulation-with-dplyr" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Data Manipulation with <code>dplyr</code></h1>
+<p>Now lets get directly into data wrangling!</p>
+<p><em>Data wrangling</em> is the process of preparing data for analysis. It often feels like you are fighting or ‘wrangling’ with the data to get it to a neat and useful state, hence the name. Things involved in data wrangling include importing data, subsetting data (selecting only the rows and columns you need), reshaping data, merging data and deriving new fields in the data.</p>
+<p>In the data-analysis workflow, data wrangling encompasses the first phase, a very important one. So, let us learn how to do this.</p>
+<p><img src="images/wf2.png" /></p>
+<p>For the purpose of data wrangling, we will use the <strong>Tidyverse</strong> library, which is a set of packages written especially for working with data. ‘Tidyverse’ is actually a <em>collection</em> of packages for data-manipulation and visualization. Specific packages in this library include <strong>dplyr</strong> (data manipulation), <strong>tidyr</strong> (data reshaping) and <strong>ggplot</strong> (plots and visualizations). For the purpose of this document, most of the functions/commands we will use come from the <strong>dplyr</strong> package.</p>
+<p>Note: <a href="https://cengel.github.io/R-data-wrangling/index.html">this online tutorial</a> is also a very good and recommended tutorial for learning data manipulation with <code>dplyr</code>, and some of the examples there might be used throughout the chapter.</p>
+<div id="objectives-1" class="section level2">
+<h2><span class="header-section-number">4.1</span> Objectives</h2>
+<ol style="list-style-type: decimal">
+<li>Learn how to import data in many formats.</li>
+<li>Learn about the pipe operator (%&gt;%)</li>
+<li>Learn how to subset data.</li>
+<li>Learn how to group and summarize data.</li>
+<li>Learn how to merge or join different datasets.</li>
+</ol>
+</div>
+<div id="importing-data" class="section level2">
+<h2><span class="header-section-number">4.2</span> Importing Data</h2>
+<p>The first step in data wrangling is actually obtaining the data that you will be working with. Data comes in different shapes, sizes and formats, so it is important to know how to import and read these in R. We will now see how to import different formats of data and which packages and commands to use to do this.</p>
+<div id="importing-excel-data" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> Importing Excel data</h3>
+<p>There are many different packages that can be used to read Excel files, but we will choose one that combines speed and flexibility: the <strong>xlsx</strong> package; this package allows both reading from and writing to Excel. Install it and load it using the commands:</p>
+<pre><code>#install
+install.packages(&quot;xlsx&quot;)
+
+#load
+library(xlsx)</code></pre>
+<p>Then, use the <code>read.xlsx2</code> function to import an Excel file (the package also contains an identical function called <code>read.xlsx</code> but <code>read.xlsx2</code> is faster when working with large files). So if we have a file named ‘mydata.xlsx’ inside the ‘data’ folder in our working directory, we would import it like this:</p>
+<pre><code>myExcelData &lt;- read.xlsx2(&quot;data/mydata.xlsx&quot;, 1)</code></pre>
+<p>The second argument (‘1’) is the index of the sheet to read, so if you were to have multiple sheets and wanted to read the third one, the command would be:</p>
+<pre><code>myExcelData &lt;- read.xlsx2(&quot;data/mydata.xlsx&quot;, 3)</code></pre>
+<p>You can take a quick look at the contents of your imported data in the following ways:</p>
+<pre><code>#View entire dataset
+View(myExcelData)
+
+#View first 5 rows
+head(myExcelData, 5)
+
+#Use the same &#39;head&#39; function but using pipes:
+myExcelData %&gt;% head(5)</code></pre>
+</div>
+<div id="importing-csv-or-text-data" class="section level3">
+<h3><span class="header-section-number">4.2.2</span> Importing CSV or text data</h3>
+<p>Just as with Excel, there are many ways to read text and CSV files. However, perhaps the easiest way is to use the <code>read.table</code> function. Below you can see how to use this function to read different kind of text files.</p>
+<pre><code>#read a CSV file with comma separators
+myCSVData &lt;- read.table(&quot;myData.csv&quot;, sep = &quot;,&quot;)
+
+#read a CSV file with semi-colon separators
+myCSVData &lt;- read.table(&quot;myData.csv&quot;, sep = &quot;;&quot;)
+
+#read a tab-delimited text file
+myCSVData &lt;- read.table(&quot;myData.csv&quot;, sep = &quot;\t&quot;)</code></pre>
+<p>As you can see, this function takes two main arguments: the path to file, and the separator (sep) used in the chosen file. Note that although CSV stands for “Comma Separated Values”, you will sometimes find that these files are separated by semi-colons, tabs or even spaces. This is why the ‘sep’ argument must be specified.</p>
+<p>You can look into the content of your imported data the same way as we did in the Excel section.</p>
+</div>
+<div id="importing-spss-data" class="section level3">
+<h3><span class="header-section-number">4.2.3</span> Importing SPSS data</h3>
+<p>Why would we want to import data in the SPSS format into R, instead of using another format? There are two main reasons.</p>
+<ol style="list-style-type: decimal">
+<li>A lot of datasets already exist in SPSS format, especially survey data. We have a lot of SPSS datasets at the SIB from past surveys and activities.</li>
+<li>SPSS files keep the <em>value labels</em> for the fields and options, something that is very important for understanding a dataset.</li>
+</ol>
+<p>Therefore, if we want our final outputs, after wrangling and analysing the data, to also have useful value labels without having to create them ourselves, we can import data in the SPSS format (or other labeled data-formats).</p>
+<p>There are two main libraries for importing SPSS data: <code>Haven</code> and <code>Foreign</code>. For the purpose of this guide, we will be using the ‘haven’ library,which can also import data that in STATA, SAS and other formats.</p>
+<p><strong>Haven</strong> gives us the advantage of providing us with “tibbles” which are a modern version of dataframes that provide smarter printing and other advantages. Tibbles can also be converted back to regular dataframes using as.data.framme(tibble_name).</p>
+<p>To read an SPSS file using Haven:</p>
+<pre><code>mySPSSdata &lt;- read_sav(&quot;spssdata.sav&quot;)</code></pre>
+<p>Notice that we did not have to provide any additional arguments to the function. If we had used Foreign,we would have needed to provide extra parameters to the function. On the other hand, Foreign is a bit more flexible, while Haven is easier.</p>
+<p>You can then see the contents of your imported file:</p>
+<pre><code>#view all data
+View(mySPSSdata)
+
+#view first 10 rows
+mySPSSdata %&gt;% head(10)</code></pre>
+<p>You can create an SPSS file from a dataframe using the <code>write_sav</code> function:</p>
+<pre><code>#write SPSS sav file
+write_sav(myDataframe, &quot;myNewFile.sav&quot;)</code></pre>
+<p>Before we start practicing with data, let’s briefly introduce an important dplyr operator: the pipe operator.</p>
+</div>
+</div>
+<div id="the-pipe-operator" class="section level2">
+<h2><span class="header-section-number">4.3</span> The pipe %&gt;% operator</h2>
+<p>The pipe operator (%&gt;%) is very useful because it allows us to chain commands from left to right. This means that the result of one command can be passed directly to another command. It goes something like this:</p>
+<pre><code>#execute three commands, passing the result of the first to the second, and of the second to the third
+dataframe %&gt;% command1 %&gt;% commmand2 %&gt;% command3
+
+#the same as before but now saving the result to an object
+result &lt;- dataframe %&gt;% command1 %&gt;% command2 %&gt;% commmand3</code></pre>
+<p>Two important thing to remember:</p>
+<ol style="list-style-type: decimal">
+<li>When starting a pipe sequence, the first item to the LEFT of the pipe is the object or dataframe that will be USED by the commands in the pipe. In the example above, <code>dataframe</code> is PASSED to command1, then the results of that is passed to command2, etc.</li>
+<li>When using pipes and other tidyverse commands, these commands do not permanently modify the data UNLESS you <strong>save</strong> the results by assigning it to an object. In the previous example, running command1, command2 and command3 does not cause permanent changes until it was saved to an object called ‘result’, which will store the results of the operations.</li>
+</ol>
+</div>
+<div id="subsetting-data-with-dplyr" class="section level2">
+<h2><span class="header-section-number">4.4</span> Subsetting data with Dplyr</h2>
+<p>Now that we know how to read and import data, as well as how to use the pipe operator, we can start looking at how to work with and manipulate data. One of the most common operations on data is subsetting it; this means: only selecting some of the columns and some of the rows. The two important Dplyr functions that we will be using for this purpose are:</p>
+<ul>
+<li><code>filter</code>: for specifying which rows to keep based on a condition that must be satisfied.</li>
+<li><code>select</code>: for specifying which columns should be kept. Columns can be specified either by name or index/position.</li>
+</ul>
+<p>We will be practicing examples by playing with some dummy data from an imaginary Labour Force Survey. A few of the columns and the first 5 rows of this dataset are shown below.</p>
+<pre><code>## 
+## Attaching package: &#39;kableExtra&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     group_rows</code></pre>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+district
+</th>
+<th style="text-align:right;">
+ed
+</th>
+<th style="text-align:right;">
+household
+</th>
+<th style="text-align:left;">
+individual_name
+</th>
+<th style="text-align:right;">
+age
+</th>
+<th style="text-align:left;">
+sex
+</th>
+<th style="text-align:left;">
+is_employed
+</th>
+<th style="text-align:left;">
+finalresult
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+101
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+Carmen Deer
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+Complete
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+102
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+John Smith Sr. 
+</td>
+<td style="text-align:right;">
+48
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+Partially Complete
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+103
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+John Smith Jr
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+Complete
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+104
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+Pedro Dias
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+Complete
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+105
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+Amira Dias
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+REFUSAL
+</td>
+</tr>
+</tbody>
+</table>
+<p>The following examples will show how to do some common subsetting operations. We will be referring to the LFS table that we created earlier in this section.</p>
+<div id="using-filter" class="section level3">
+<h3><span class="header-section-number">4.4.1</span> Using filter</h3>
+<p>First, let’s see how to use the filter function:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="data-manipulation-with-dplyr.html#cb43-1"></a><span class="co">#- display rows containing indivuals ages 14 and over</span></span>
+<span id="cb43-2"><a href="data-manipulation-with-dplyr.html#cb43-2"></a>lfsData <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(age <span class="op">&gt;=</span><span class="st"> </span><span class="dv">14</span>, age <span class="op">!=</span><span class="st"> </span><span class="dv">999</span>) </span></code></pre></div>
+<pre><code>##   district  ed household individual_name age    sex is_employed
+## 1        1 101        11     Carmen Deer  24 female        TRUE
+## 2        2 102        12  John Smith Sr.  48   male        TRUE
+## 3        3 103        12   John Smith Jr  24   male       FALSE
+## 4        4 104        13      Pedro Dias  35   male        TRUE
+## 5        5 105        13      Amira Dias  33 female          NA
+##          finalresult
+## 1           Complete
+## 2 Partially Complete
+## 3           Complete
+## 4           Complete
+## 5            REFUSAL</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="data-manipulation-with-dplyr.html#cb45-1"></a><span class="co">#- save rows containing females that are unemployed</span></span>
+<span id="cb45-2"><a href="data-manipulation-with-dplyr.html#cb45-2"></a>unemployedFemales &lt;-<span class="st"> </span>lfsData <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(sex <span class="op">==</span><span class="st">  &quot;female&quot;</span>, is_employed <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span>)</span></code></pre></div>
+<p>In the previous example, the first expression filters respondents who are over 14 (and not 999 which is a special value for ‘missing’), and prints/displays the results. The second expression filters respondents who are female and who are employed and does not display the results but instead SAVES them in the <code>unemployedFemales</code> object.</p>
+<p>Import to remember about the <code>filter</code> function:</p>
+<ol style="list-style-type: decimal">
+<li>You use the R comparison operators to create conditions, such as <code>==</code> (equal to), <code>!=</code> (not equal to), <code>&gt;</code> (greater than), <code>&lt;=</code> (less than or equal to).</li>
+<li>You can specify more than one condition, separating them using commas. Eg: <code>filter(condition1, condition2, condition3)</code>.</li>
+<li>You can als use the OR operator, where AT LEAST one of your listed conditions must be true. For this, use <code>|</code>. (Example: <code>fattyfoods &lt;- allfoods %&gt;% filter(foodgroup == "fats" | fatcontent &gt; 0.5)</code>.
+<ul>
+<li>The above example can be read in plain English as: “From the allfoods dataframe, filter the rows where the value in the foodgroup column is”fats", OR where the value in the fatcontent column is greater than 0.5, and save these rows in the fattyfoods object.</li>
+</ul></li>
+</ol>
+</div>
+<div id="using-select" class="section level3">
+<h3><span class="header-section-number">4.4.2</span> Using select</h3>
+<p>Now lets see how to use the select function:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="data-manipulation-with-dplyr.html#cb46-1"></a><span class="co">##-- Using select without saving results</span></span>
+<span id="cb46-2"><a href="data-manipulation-with-dplyr.html#cb46-2"></a><span class="co">#- display the &#39;age&#39; and &#39;finalresult&#39; columns of the dataset</span></span>
+<span id="cb46-3"><a href="data-manipulation-with-dplyr.html#cb46-3"></a>lfsData <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(age, finalresult)</span></code></pre></div>
+<pre><code>##   age        finalresult
+## 1  24           Complete
+## 2  48 Partially Complete
+## 3  24           Complete
+## 4  35           Complete
+## 5  33            REFUSAL</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="data-manipulation-with-dplyr.html#cb48-1"></a><span class="co">##-- Using select AND saving the results</span></span>
+<span id="cb48-2"><a href="data-manipulation-with-dplyr.html#cb48-2"></a><span class="co">#- save the &#39;district&#39;, &#39;age&#39; and &#39;finalresult&#39; columns of the dataset</span></span>
+<span id="cb48-3"><a href="data-manipulation-with-dplyr.html#cb48-3"></a>myDistrictData &lt;-<span class="st"> </span>lfsData <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(district, age, finalresult)</span></code></pre></div>
+<p>Now lets put use the two commands together:</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="data-manipulation-with-dplyr.html#cb49-1"></a><span class="co">##-- Using select and filter together</span></span>
+<span id="cb49-2"><a href="data-manipulation-with-dplyr.html#cb49-2"></a><span class="co">#- display the interview__key and name for unemployed males in the dataset</span></span>
+<span id="cb49-3"><a href="data-manipulation-with-dplyr.html#cb49-3"></a>lfsData <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb49-4"><a href="data-manipulation-with-dplyr.html#cb49-4"></a><span class="st">  </span><span class="kw">filter</span>(sex <span class="op">==</span><span class="st"> &quot;male&quot;</span>, is_employed  <span class="op">==</span><span class="st"> </span><span class="ot">FALSE</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb49-5"><a href="data-manipulation-with-dplyr.html#cb49-5"></a><span class="st">  </span><span class="kw">select</span>(individual_name, finalresult)</span></code></pre></div>
+<pre><code>##   individual_name finalresult
+## 1   John Smith Jr    Complete</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="data-manipulation-with-dplyr.html#cb51-1"></a><span class="co">#- The same command as before but now saving the results</span></span>
+<span id="cb51-2"><a href="data-manipulation-with-dplyr.html#cb51-2"></a>unemployedMales &lt;-<span class="st"> </span>lfsData <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb51-3"><a href="data-manipulation-with-dplyr.html#cb51-3"></a><span class="st">  </span><span class="kw">filter</span>(sex <span class="op">==</span><span class="st"> &quot;male&quot;</span>, is_employed  <span class="op">==</span><span class="st"> </span><span class="ot">FALSE</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb51-4"><a href="data-manipulation-with-dplyr.html#cb51-4"></a><span class="st">  </span><span class="kw">select</span>(individual_name, finalresult)</span></code></pre></div>
+<p>As you see in the previous examples, when you are chaining operations with a pipe, it is good to start each operation on a new line. This makes for cleaner, much more readable code. The best thing about DPLYR is that it makes manipulating data so clean to read and write!! For comparison, here is how you would write the previous example using plain R:</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="data-manipulation-with-dplyr.html#cb52-1"></a><span class="co">##-- Using select and filter together</span></span>
+<span id="cb52-2"><a href="data-manipulation-with-dplyr.html#cb52-2"></a><span class="co">#- display the interview__key and name for unemployed males in the dataset</span></span>
+<span id="cb52-3"><a href="data-manipulation-with-dplyr.html#cb52-3"></a>lfsData[lfsData<span class="op">$</span>sex <span class="op">==</span><span class="st"> &quot;male&quot;</span> <span class="op">&amp;</span><span class="st"> </span>lfsData<span class="op">$</span>is_employed <span class="op">==</span><span class="st"> </span><span class="ot">FALSE</span>, <span class="kw">c</span>(<span class="st">&quot;individual_name&quot;</span>, <span class="st">&quot;finalresult&quot;</span>)]</span>
+<span id="cb52-4"><a href="data-manipulation-with-dplyr.html#cb52-4"></a></span>
+<span id="cb52-5"><a href="data-manipulation-with-dplyr.html#cb52-5"></a><span class="co">#- The same command as before but now saving the results</span></span>
+<span id="cb52-6"><a href="data-manipulation-with-dplyr.html#cb52-6"></a>unemployedMales &lt;-<span class="st"> </span>lfsData[lfsData<span class="op">$</span>sex <span class="op">==</span><span class="st"> &quot;male&quot;</span> <span class="op">&amp;</span><span class="st"> </span>lfsData<span class="op">$</span>is_employed <span class="op">==</span><span class="st"> </span><span class="ot">FALSE</span>, <span class="kw">c</span>(<span class="st">&quot;individual_name&quot;</span>, <span class="st">&quot;finalresult&quot;</span>)]</span></code></pre></div>
+<p>As we can see, we can still do subsetting in base/plain R, but it is more confusing to read and write!! DPLYR allows you to use explicit action words such as SELECT and FILTER that automatically let your brain know what is going on.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="r-language-basics.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/03-manipulation.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
